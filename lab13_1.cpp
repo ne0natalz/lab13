@@ -17,3 +17,50 @@ int main(){
     cout << "\nMin = " << B[5];
     return 0;
 }
+void stat(const double A[], int size, double B[]){
+   
+    
+    double sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += A[i];
+    }
+    B[0] = sum / size;
+   
+   
+    double sumSquaredDiff = 0;
+    for (int i = 0; i < size; ++i) {
+        sumSquaredDiff += pow(A[i] - B[0], 2);
+    }
+    B[1] = sqrt(sumSquaredDiff / size);
+    
+   
+    double product = 1.0;
+    for (int i = 0; i < size; ++i) {
+        product *= A[i];
+    }
+    B[2] = pow(product, 1.0 / size);
+   
+    
+    double sumReciprocal = 0;
+    for (int i = 0; i < size; ++i) {
+        sumReciprocal += 1.0 / A[i];
+    }
+    B[3] = size / sumReciprocal;
+
+
+    double maxVal = A[0];
+    double minVal = A[0];
+
+    for (int i = 1; i < size; ++i) {
+        if (A[i] > maxVal) {
+            maxVal = A[i];
+        }
+        if (A[i] < minVal) {
+            minVal = A[i];
+        }
+    }
+    B[4] = maxVal;
+    B[5] = minVal;
+
+
+}
